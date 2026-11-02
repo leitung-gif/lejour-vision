@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" width="12" height="12">
+<title>Le Jour hobnail tile (clous de Paris), repeat as background</title>
+<rect width="12" height="12" fill="#11110F"/>
+<path d="M6 1 L11 6 L6 11 L1 6 Z" fill="#1C1C19"/>
+<path d="M6 1 L11 6 L6 6 Z" fill="#26261F"/>
+<path d="M6 11 L1 6 L6 6 Z" fill="#0B0B0A"/>
+</svg>
