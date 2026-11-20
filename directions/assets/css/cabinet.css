@@ -1,0 +1,93 @@
+/* Richtung 7 · Cabinet · Zifferblaetter als Kunst, Raeume in Zifferblattfarben, Bodoni Moda und Work Sans */
+:root{
+  --bg:#E8E7E3;--ink:#161616;--ink-soft:#3A3A38;--muted:#6D6B66;--line:#D3D1CB;--line-strong:#161616;
+  --malachite:#0F3D2E;--rosso:#561816;--skyroom:#B4C8D5;--bronze:#6E4524;--accent:#0F3D2E;--dark:#121212;--on-dark:#F4F3EF;--muted-dark:#A9A7A0;--tile:#F4F3EF;
+  --f-display:"Bodoni Moda",Didot,Georgia,serif;--f-text:"Work Sans",system-ui,sans-serif;--f-ui:"Work Sans",system-ui,sans-serif;
+  --logo-w:108px;--nav-ls:.16em;--nav-fs:11px;--card-f:var(--f-display);--card-fs:19px;--card-w:500;
+}
+.p-home main,.p-watch main{padding-top:72px}
+.kick,.rn{font-family:var(--f-ui);font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:inherit;opacity:.75}
+.more{color:inherit}
+h1,h2{font-family:var(--f-display);font-weight:500;letter-spacing:-.01em;text-wrap:balance}
+
+.hero{padding:clamp(56px,7vw,110px) 0}
+.malachite{background:var(--malachite);color:var(--on-dark)}
+.rosso{background:var(--rosso);color:var(--on-dark)}
+.sky{background:var(--skyroom);color:var(--ink)}
+.bronze{background:var(--bronze);color:var(--on-dark)}
+.hero-in{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(32px,6vw,96px);align-items:center}
+.hero h1{font-size:clamp(52px,6.4vw,104px);line-height:.95;margin:18px 0 22px}
+.hero .lead{font-size:18px;max-width:440px;opacity:.85;margin-bottom:28px}
+
+.work{margin:0;display:flex;flex-direction:column;align-items:flex-start;gap:18px}
+.frame{background:#F4F3EF;padding:clamp(16px,2.4vw,34px);box-shadow:0 1px 0 rgba(0,0,0,.2),0 24px 48px -24px rgba(0,0,0,.55);width:100%}
+.frame img{width:100%;aspect-ratio:1;object-fit:cover;outline:1px solid rgba(0,0,0,.12)}
+.work.big .frame{max-width:560px}
+.lab{background:#fff;color:#161616;padding:12px 14px;font-family:var(--f-ui);font-size:12.5px;line-height:1.5;min-width:220px;box-shadow:0 1px 2px rgba(0,0,0,.12)}
+.lab .lt{font-family:var(--f-display);font-size:16px;margin-bottom:4px}
+.lab .lt i{font-style:italic}
+.lab .rf{margin-top:6px;color:#6D6B66;letter-spacing:.04em}
+
+.room{padding:clamp(72px,8vw,120px) 0}
+.rh{display:grid;grid-template-columns:auto 1fr;gap:6px 40px;align-items:end;margin-bottom:clamp(36px,4vw,56px)}
+.rh .rn{grid-column:1/-1}
+.rh h2{font-size:clamp(48px,5.6vw,92px);line-height:.92}
+.rh .rt{max-width:460px;opacity:.85;font-size:16px;justify-self:end}
+.works{display:grid;gap:clamp(20px,3vw,48px);align-items:start}
+.works.n2{grid-template-columns:repeat(2,minmax(0,420px));justify-content:center}
+.works.n3{grid-template-columns:repeat(3,1fr)}
+
+.wall{padding:clamp(72px,8vw,120px) 0;background:var(--bg)}
+.dwall{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:10px}
+.dw img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:50%;transition:transform .25s}
+.dw:hover img{transform:scale(1.08)}
+.dwall.six{grid-template-columns:repeat(6,1fr);gap:20px}
+.dw.big span{display:block;text-align:center;font-family:var(--f-display);font-size:16px;margin-top:10px}
+
+.arch{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(32px,6vw,96px);align-items:center;padding:clamp(72px,8vw,120px) var(--gut);border-top:1px solid var(--line)}
+.arch .ph{aspect-ratio:4/5}
+.arch h2{font-size:clamp(40px,4vw,64px);line-height:.95;margin:14px 0 18px}
+.arch p:not(.rn){color:var(--ink-soft);max-width:480px;margin-bottom:22px}
+.svcw{padding:56px var(--gut);border-top:1px solid var(--line)}
+.letw{background:var(--malachite);color:var(--on-dark);padding:clamp(56px,7vw,96px) 0}
+.letw .h-sec{font-family:var(--f-display);font-weight:500;font-size:clamp(34px,3.4vw,52px);line-height:1}
+.letw .lead{opacity:.8;max-width:520px;margin-top:12px}
+.letw input{border-color:rgba(255,255,255,.5);color:#fff}
+.letw input::placeholder{color:rgba(255,255,255,.7)}
+.letw .btn{--btn-bg:#F4F3EF;--btn-ink:#0F3D2E}
+.ft{--ft-bg:#121212}
+
+/* Produktseite */
+.pdp{background:var(--rosso);color:var(--on-dark);padding:clamp(48px,6vw,96px) 0}
+.pdp-in{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,96px);align-items:start}
+.buy h1{font-size:clamp(44px,4.4vw,72px);line-height:.95;margin:12px 0 20px}
+.buy h1 i{font-style:italic}
+.lab.solo{min-width:0;max-width:360px}
+.intro-p{margin-top:22px;opacity:.88}
+.lbl{font-size:11px;letter-spacing:.18em;text-transform:uppercase;opacity:.7;margin-top:24px}
+.dials button{border-radius:50%;background:#F4F3EF}
+.dials button[aria-pressed=true]{outline:2px solid #F4F3EF;outline-offset:2px}
+.add{width:100%;margin-top:24px;--btn-bg:#F4F3EF;--btn-ink:#561816}
+.ship{font-size:13px;opacity:.7;text-align:center;margin:10px 0 24px}
+.pdp details.acc{border-color:rgba(255,255,255,.2)}
+.pdp details.acc .in{color:#E9E1DE}
+.pdp .sheet dt{color:#C9B5B1}
+.mos{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.mos .ph{aspect-ratio:4/5;background:#000}
+.p-watch .room.rosso{background:#3F1110}
+
+@media (max-width:1000px){
+  .hero-in,.arch,.pdp-in{grid-template-columns:1fr}
+  .works.n3{grid-template-columns:1fr 1fr}
+  .rh{grid-template-columns:1fr}.rh .rt{justify-self:start}
+  .dwall.six{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:760px){
+  .works.n2,.works.n3{grid-template-columns:1fr}
+  .hero h1{font-size:52px}
+  .dwall{grid-template-columns:repeat(5,1fr);gap:6px}
+  .mos{grid-template-columns:1fr}
+}
+
+.dials.round button{width:56px;height:56px;border-radius:50%;padding:0;overflow:hidden}
+.dials.round img{mix-blend-mode:normal}

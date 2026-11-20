@@ -1,0 +1,350 @@
+<title>Le Jour Directions</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=EB+Garamond:wght@500&family=Jost:wght@400;500&family=Archivo:wdth,wght@100..125,400..500&family=Albert+Sans:wght@400;600&family=Gloock&family=Hanken+Grotesk:wght@400;600&family=Big+Shoulders+Display:wght@800&family=Barlow:wght@400&family=Bodoni+Moda:opsz,wght@6..96,500&family=Work+Sans:wght@400&family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap">
+<style>
+@font-face{font-family:"Mona Sans";src:url(assets/fonts/MonaSans-var.woff2) format("woff2");font-weight:200 900;font-stretch:75% 125%;font-display:swap}
+@font-face{font-family:"Spectral";src:url(assets/fonts/Spectral-400.woff2) format("woff2");font-weight:400;font-display:swap}
+/* Layout: a moodboard matrix. Four directions as columns, each aspect (colour, type, mood, homepage, product) on one shared row via subgrid. Single light look by choice, so the four palettes read true. */
+:root{
+  --ground:#ECEAE5;--paper:#FFFFFF;--ink:#171614;--soft:#55524C;--rule:#D6D2CA;--mark:#1F4A3A;
+  --f-ui:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--f-ui);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+.page{max-width:1640px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 72px}
+header.top{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:24px 64px;align-items:end;padding-bottom:36px;border-bottom:1px solid var(--rule)}
+.brand{width:132px;height:auto;margin-bottom:28px}
+h1{font-size:clamp(34px,4vw,56px);line-height:1.02;letter-spacing:-.03em;font-weight:600;margin:0;text-wrap:balance}
+.lede{margin:0;color:var(--soft);max-width:60ch;font-size:16px}
+.meta{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:14px;font-size:12.5px;color:var(--soft)}
+.meta span{white-space:nowrap}
+
+.board{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(10,auto);column-gap:20px;margin-top:36px}
+.dir{display:grid;grid-template-rows:subgrid;grid-row:span 10;background:var(--paper);border-radius:6px;overflow:hidden;min-width:0}
+.dir>*{padding:0 20px;min-width:0}
+.blk{padding-top:18px;padding-bottom:18px;border-top:1px solid #ECE9E3}
+.lbl{font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8A857C;margin:0 0 10px}
+
+.hd{padding-top:20px;padding-bottom:16px;display:flex;flex-direction:column;gap:10px}
+.tag{align-self:flex-start;font-size:11px;font-weight:600;letter-spacing:.06em;padding:4px 10px;border-radius:99px;background:#F0EEE9;color:var(--soft)}
+.tag.bold{background:var(--ink);color:#fff}
+.hd h2{margin:0;font-size:28px;line-height:1.05;letter-spacing:-.02em;font-weight:600}
+.idea{margin:0;color:var(--soft);font-size:14.5px}
+
+.sw{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.sw div{display:flex;flex-direction:column;gap:6px;min-width:0}
+.sw i{display:block;aspect-ratio:1/1.25;border-radius:3px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
+.sw b{font-size:11px;font-weight:600;line-height:1.2}
+.sw small{font-size:10.5px;color:#8A857C;font-variant-numeric:tabular-nums}
+
+.spec{border-radius:4px;padding:18px 16px 16px;display:flex;flex-direction:column;gap:10px}
+.spec .d{font-size:34px;line-height:1}
+.spec .t{font-size:14px;line-height:1.5}
+.spec .n{font-size:11px;letter-spacing:.04em;opacity:.7;font-family:var(--f-ui)}
+
+.mood{display:grid;grid-template-columns:1.3fr 1fr;grid-template-rows:1fr 1fr;gap:6px;aspect-ratio:1.35}
+.mood figure{margin:0;border-radius:3px;overflow:hidden;background:#ddd;min-height:0}
+.mood figure:first-child{grid-row:span 2}
+.mood img{width:100%;height:100%;object-fit:cover}
+.mood .mult{display:grid;place-items:center}
+.mood .mult img{mix-blend-mode:multiply;object-fit:contain;width:84%;height:84%}
+
+.shot{position:relative;display:block;border-radius:4px;overflow:hidden;box-shadow:0 0 0 1px rgba(0,0,0,.08)}
+.shot img{width:100%}
+.shot .mob{position:absolute;right:10px;bottom:10px;width:24%;border-radius:6px;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,.28),0 0 0 1px rgba(0,0,0,.2)}
+.shot:hover{box-shadow:0 0 0 2px var(--ink)}
+
+ul.took{margin:0;padding:0;list-style:none;display:grid;gap:8px;font-size:13.5px;color:#34312C}
+ul.took li{padding-left:14px;position:relative}
+ul.took li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:1px;background:var(--ink)}
+
+.go{padding-top:4px;padding-bottom:22px;display:flex;gap:8px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 16px;border-radius:99px;font-size:13px;font-weight:600;text-decoration:none;border:1px solid var(--ink)}
+.btn.p{background:var(--ink);color:#fff}
+.btn:focus-visible,.shot:focus-visible{outline:2px solid var(--mark);outline-offset:3px}
+
+section.learn{margin-top:56px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2.2fr);gap:24px 64px;padding-top:36px;border-top:1px solid var(--rule)}
+section.learn h2{margin:0;font-size:26px;letter-spacing:-.02em;font-weight:600;line-height:1.1;text-wrap:balance}
+section.learn ol{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 40px;counter-reset:l}
+section.learn li{counter-increment:l;display:grid;grid-template-columns:28px 1fr;gap:4px 8px}
+section.learn li::before{content:counter(l);font-weight:600;font-variant-numeric:tabular-nums;color:var(--mark)}
+section.learn b{display:block;font-weight:600}
+section.learn p{margin:2px 0 0;color:var(--soft);font-size:14px;grid-column:2}
+footer.f{margin-top:48px;font-size:12.5px;color:var(--soft);display:flex;flex-wrap:wrap;gap:8px 24px}
+
+.part{margin-top:56px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:8px 64px;align-items:end}
+.part .pn{grid-column:1/-1;margin:0;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mark)}
+.part h2{margin:0;font-size:clamp(26px,2.6vw,38px);line-height:1.05;letter-spacing:-.025em;font-weight:600;text-wrap:balance}
+.part .lede{font-size:15px}
+.board{margin-top:24px!important}
+.mood .sun{background:#F2BE3A;display:grid;place-items:center}
+.mood .sun span{display:grid;place-items:center;width:78%;aspect-ratio:1;border-radius:50%;background:#fff;overflow:hidden}
+.mood .sun img{width:76%;height:auto;object-fit:contain}
+.mood .frm,.mood .dot{display:grid;place-items:center}
+.mood .frm span{display:block;width:62%;background:#F4F3EF;padding:7%;box-shadow:0 10px 20px -10px rgba(0,0,0,.6)}
+.mood .frm img{aspect-ratio:1;height:auto}
+.mood .dot span{display:block;width:66%;aspect-ratio:1;border-radius:50%;overflow:hidden;box-shadow:0 0 0 4px #fff}
+@media (max-width:720px){.part{grid-template-columns:1fr}}
+@media (max-width:1180px){
+  .board{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:20px}
+}
+@media (max-width:720px){
+  header.top{grid-template-columns:1fr}
+  .board{display:flex;flex-direction:column;gap:20px}
+  .dir{display:flex;flex-direction:column}
+  section.learn{grid-template-columns:1fr}
+  section.learn ol{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="page">
+<header class="top">
+  <div>
+    <img class="brand" src="assets/img/logo.png" alt="Le Jour" width="132" height="38">
+    <h1>Eight directions for the new Le Jour</h1>
+  </div>
+  <div>
+    <p class="lede">Four identities for the new shop, built on what you liked at Venezianico (flow, structure, brand presentation) and on how Christopher Ward presents its range. Same watches, your logo, real photography from lejourwatches.ch. Part one stays close to your references. Part two adds four directions with more character: sunny, lively, memorable. Each has a full homepage and a product page to click through, on desktop and phone.</p>
+    <div class="meta"><span>Prepared by Lorien Group</span><span>20.11.2026</span><span>Prices as in today’s shop, in USD</span></div>
+  </div>
+</header>
+
+<main>
+<div class="part"><p class="pn">Part one</p><h2>Four directions close to your references</h2></div>
+<section class="board" aria-label="Directions one to four">
+
+<article class="dir">
+  <div class="hd"><span class="tag">Close to today, one class up</span><h2 style="font-family:'EB Garamond',Georgia,serif;font-weight:500;font-size:34px">Maison</h2><p class="idea">The house view. Ivory, bronze and a classic serif, the watch as the hero and the story told in calm chapters.</p></div>
+  <div class="blk"><p class="lbl">Colour</p><div class="sw">
+    <div><i style="background:#F6F2EC"></i><b>Ivory</b><small>#F6F2EC</small></div>
+    <div><i style="background:#1D1A16"></i><b>Ink</b><small>#1D1A16</small></div>
+    <div><i style="background:#8C6A3F"></i><b>Bronze</b><small>#8C6A3F</small></div>
+    <div><i style="background:#17130F"></i><b>Night</b><small>#17130F</small></div>
+    <div><i style="background:#E2DBD0"></i><b>Sand</b><small>#E2DBD0</small></div>
+  </div></div>
+  <div class="blk"><p class="lbl">Type</p><div class="spec" style="background:#F6F2EC;color:#1D1A16">
+    <span class="d" style="font-family:'EB Garamond',Georgia,serif;font-weight:500">Corsa Master</span>
+    <span class="t" style="font-family:'Jost',sans-serif">A 42 mm racing chronograph with a tachymeter bezel and seven dials.</span>
+    <span class="n">EB Garamond 500 · Jost 400 and 500</span></div></div>
+  <div class="blk"><p class="lbl">Image mood</p><div class="mood">
+    <figure><img src="assets/img/sq-hero-maison-900.webp" alt="Corsa Master Panda in warm studio light" loading="lazy"></figure>
+    <figure><img src="assets/img/lj-cm-002-07-p-900.webp" alt="Corsa Master Reverse Panda on a pedestal" loading="lazy"></figure>
+    <figure><img src="assets/img/lj-cm-001-06-700.webp" alt="Corsa Master Panda on a leather case" loading="lazy"></figure>
+  </div></div>
+  <div class="blk"><p class="lbl">Homepage</p><a class="shot" href="1-maison/index.html"><img src="assets/board/1-maison-home.webp" alt="Maison homepage, first screen" loading="lazy"><span class="mob"><img src="assets/board/1-maison-mobil.webp" alt="Maison homepage on a phone" loading="lazy"></span></a></div>
+  <div class="blk"><p class="lbl">Product detail</p><a class="shot" href="1-maison/watch.html"><img src="assets/board/1-maison-watch.webp" alt="Maison product page, Corsa Master Panda" loading="lazy"></a></div>
+  <div class="blk"><p class="lbl">From Venezianico</p><ul class="took"><li>Product hero with one line and one button</li><li>Story in two calm image and text chapters</li><li>Collections as a swipe row of wrist shots</li><li>One large brand line running across the page</li><li>Product page with thumbnails, accordions and a dark story band</li></ul></div>
+  <div class="blk"><p class="lbl">From Christopher Ward</p><ul class="took"><li>Every watch card names size, movement and water resistance</li></ul></div>
+  <div class="blk"><p class="lbl">Feels like</p><p class="idea">A Swiss maison with a long memory. Quiet, warm, assured.</p></div>
+  <div class="go"><a class="btn p" href="1-maison/index.html">Open homepage</a><a class="btn" href="1-maison/watch.html">Product page</a></div>
+</article>
+
+<article class="dir">
+  <div class="hd"><span class="tag bold">Bold departure</span><h2 style="font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:500;text-transform:uppercase;letter-spacing:.02em;font-size:26px">Heure Bleue</h2><p class="idea">The blue hour. Midnight blue, silver light and wide capitals, a cinematic shop where every watch stands in its own light.</p></div>
+  <div class="blk"><p class="lbl">Colour</p><div class="sw">
+    <div><i style="background:#0B1116"></i><b>Midnight</b><small>#0B1116</small></div>
+    <div><i style="background:#1F2A33"></i><b>Steel</b><small>#1F2A33</small></div>
+    <div><i style="background:#E9ECEF"></i><b>Silver</b><small>#E9ECEF</small></div>
+    <div><i style="background:#9FBAD3"></i><b>Ice</b><small>#9FBAD3</small></div>
+    <div><i style="background:#E7E5E1"></i><b>Porcelain</b><small>#E7E5E1</small></div>
+  </div></div>
+  <div class="blk"><p class="lbl">Type</p><div class="spec" style="background:#0B1116;color:#E9ECEF">
+    <span class="d" style="font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:500;text-transform:uppercase;font-size:30px">Corsa Master</span>
+    <span class="t" style="font-family:'Archivo',sans-serif">A 42 mm racing chronograph with a tachymeter bezel and seven dials.</span>
+    <span class="n">Archivo Expanded 500 · Archivo 400</span></div></div>
+  <div class="blk"><p class="lbl">Image mood</p><div class="mood">
+    <figure><img src="assets/img/sq-hero-bleue-900.webp" alt="Corsa Master Reverse Panda in blue light" loading="lazy"></figure>
+    <figure><img src="assets/img/lj-scd-002-03-700.webp" alt="Seacolt dial close-up" loading="lazy"></figure>
+    <figure><img src="assets/img/lj-cm-002-06-700.webp" alt="Corsa Master under stage lights" loading="lazy"></figure>
+  </div></div>
+  <div class="blk"><p class="lbl">Homepage</p><a class="shot" href="2-heure-bleue/index.html"><img src="assets/board/2-heure-bleue-home.webp" alt="Heure Bleue homepage, first screen" loading="lazy"><span class="mob"><img src="assets/board/2-heure-bleue-mobil.webp" alt="Heure Bleue homepage on a phone" loading="lazy"></span></a></div>
+  <div class="blk"><p class="lbl">Product detail</p><a class="shot" href="2-heure-bleue/watch.html"><img src="assets/board/2-heure-bleue-watch.webp" alt="Heure Bleue product page, Corsa Master" loading="lazy"></a></div>
+  <div class="blk"><p class="lbl">From Venezianico</p><ul class="took"><li>Dark full-bleed product imagery as the opening</li><li>Cinematic bands between product blocks</li><li>Specifications set large, like their calibre block</li><li>The journal as image-led stories</li></ul></div>
+  <div class="blk"><p class="lbl">From Christopher Ward</p><ul class="took"><li>Three worlds with a starting price each</li><li>In-stock row right after the opening</li></ul></div>
+  <div class="blk"><p class="lbl">Feels like</p><p class="idea">Night drive, instrument panel, the watch catching the last light.</p></div>
+  <div class="go"><a class="btn p" href="2-heure-bleue/index.html">Open homepage</a><a class="btn" href="2-heure-bleue/watch.html">Product page</a></div>
+</article>
+
+<article class="dir">
+  <div class="hd"><span class="tag">Step away, keeps the warmth</span><h2 style="font-family:'Mona Sans',sans-serif;font-stretch:110%;font-weight:500;font-size:30px">Cadran</h2><p class="idea">Tabac, brass and cream, opened by Le Jour’s own film. The June 1980 catalogue becomes the brand’s signature.</p></div>
+  <div class="blk"><p class="lbl">Colour</p><div class="sw">
+    <div><i style="background:#F1EBE1"></i><b>Cream</b><small>#F1EBE1</small></div>
+    <div><i style="background:#16110C"></i><b>Tabac</b><small>#16110C</small></div>
+    <div><i style="background:#A9824A"></i><b>Brass</b><small>#A9824A</small></div>
+    <div><i style="background:#E7DECF"></i><b>Linen</b><small>#E7DECF</small></div>
+    <div><i style="background:#1E1812"></i><b>Ink</b><small>#1E1812</small></div>
+  </div></div>
+  <div class="blk"><p class="lbl">Type</p><div class="spec" style="background:#16110C;color:#F1EBE1">
+    <span class="d" style="font-family:'Mona Sans',sans-serif;font-stretch:110%;font-weight:500">Corsa Master</span>
+    <span class="t" style="font-family:'Spectral',Georgia,serif;font-size:15px">A 42 mm racing chronograph with a tachymeter bezel and seven dials.</span>
+    <span class="n">Mona Sans 500 · Spectral 400</span></div></div>
+  <div class="blk"><p class="lbl">Image mood</p><div class="mood">
+    <figure><img src="assets/video/poster-auftakt.jpg" alt="Still from the Le Jour film: Corsa Master on black" loading="lazy"></figure>
+    <figure><img src="assets/img/lj-fd-002-07-p-900.webp" alt="Fardon Malachite in warm light" loading="lazy"></figure>
+    <figure><img src="assets/img/lj-hb-001-04-p-900.webp" alt="Hammerhead Bronze on the wrist" loading="lazy"></figure>
+  </div></div>
+  <div class="blk"><p class="lbl">Homepage</p><a class="shot" href="3-cadran/index.html"><img src="assets/board/3-cadran-home.webp" alt="Cadran homepage, first screen" loading="lazy"><span class="mob"><img src="assets/board/3-cadran-mobil.webp" alt="Cadran homepage on a phone" loading="lazy"></span></a></div>
+  <div class="blk"><p class="lbl">Product detail</p><a class="shot" href="3-cadran/watch.html"><img src="assets/board/3-cadran-watch.webp" alt="Cadran product page, Corsa Master Panda" loading="lazy"></a></div>
+  <div class="blk"><p class="lbl">From Venezianico</p><ul class="took"><li>Film as the opening, one line on top</li><li>A heritage chapter in a dark band</li><li>Lines told one by one, image and a few words</li></ul></div>
+  <div class="blk"><p class="lbl">From Christopher Ward</p><ul class="took"><li>A first look at six watches right after the film</li><li>Delivery, duties and service beside the buy button</li></ul></div>
+  <div class="blk"><p class="lbl">Feels like</p><p class="idea">A collector’s study. Leather, brass, an old catalogue on the desk.</p></div>
+  <div class="go"><a class="btn p" href="3-cadran/index.html">Open homepage</a><a class="btn" href="3-cadran/watch.html">Product page</a></div>
+</article>
+
+<article class="dir">
+  <div class="hd"><span class="tag bold">Bold departure</span><h2 style="font-family:'Albert Sans',sans-serif;font-weight:600;letter-spacing:-.03em;font-size:32px">Galerie</h2><p class="idea">A bright gallery where every line wears a colour taken from its dials. The shortest way from first look to checkout.</p></div>
+  <div class="blk"><p class="lbl">Colour</p><div class="sw">
+    <div><i style="background:#FFFFFF"></i><b>White</b><small>#FFFFFF</small></div>
+    <div><i style="background:#121212"></i><b>Graphite</b><small>#121212</small></div>
+    <div><i style="background:#1F4A3A"></i><b>Racing</b><small>#1F4A3A</small></div>
+    <div><i style="background:#EFEAE0"></i><b>Panda</b><small>#EFEAE0</small></div>
+    <div><i style="background:#E3E9EE"></i><b>Delmare</b><small>#E3E9EE</small></div>
+  </div></div>
+  <div class="blk"><p class="lbl">Type</p><div class="spec" style="background:#F3F2EF;color:#121212">
+    <span class="d" style="font-family:'Albert Sans',sans-serif;font-weight:600;letter-spacing:-.03em">Corsa Master</span>
+    <span class="t" style="font-family:'Albert Sans',sans-serif">A 42 mm racing chronograph with a tachymeter bezel and seven dials.</span>
+    <span class="n">Albert Sans 600 and 400</span></div></div>
+  <div class="blk"><p class="lbl">Image mood</p><div class="mood">
+    <figure class="mult" style="background:#EFEAE0"><img src="assets/img/pack-lj-cm-001-02-800.webp" alt="Corsa Master Panda, front view" loading="lazy"></figure>
+    <figure class="mult" style="background:#E2EAE4"><img src="assets/img/pack-lj-fd-002-02-800.webp" alt="Fardon Malachite, front view" loading="lazy"></figure>
+    <figure><img src="assets/img/band-bar-1400.webp" alt="Fardon Malachite on a bar counter" loading="lazy"></figure>
+  </div></div>
+  <div class="blk"><p class="lbl">Homepage</p><a class="shot" href="4-galerie/index.html"><img src="assets/board/4-galerie-home.webp" alt="Galerie homepage, first screen" loading="lazy"><span class="mob"><img src="assets/board/4-galerie-mobil.webp" alt="Galerie homepage on a phone" loading="lazy"></span></a></div>
+  <div class="blk"><p class="lbl">Product detail</p><a class="shot" href="4-galerie/watch.html"><img src="assets/board/4-galerie-watch.webp" alt="Galerie product page, Corsa Master" loading="lazy"></a></div>
+  <div class="blk"><p class="lbl">From Venezianico</p><ul class="took"><li>One large campaign image between the product blocks</li><li>Journal and story kept close to the shop</li></ul></div>
+  <div class="blk"><p class="lbl">From Christopher Ward</p><ul class="took"><li>Families as coloured cards you can swipe</li><li>Filters by world, spec chips on every watch</li><li>Trust row: duties, delivery, service</li></ul></div>
+  <div class="blk"><p class="lbl">Feels like</p><p class="idea">A bright Swiss shop window. Clear, confident, easy to buy from.</p></div>
+  <div class="go"><a class="btn p" href="4-galerie/index.html">Open homepage</a><a class="btn" href="4-galerie/watch.html">Product page</a></div>
+</article>
+
+</section>
+<div class="part" id="more"><p class="pn">Part two</p><h2>Four more directions, with more character</h2><p class="lede">Lively, sunny, with a colour or a gesture people remember. Still a mid-price Swiss watch brand, still clean. Built on what you liked about Baqless: clear, vibrant combinations. Same watches, same logo, only real Le Jour photography.</p></div>
+<section class="board" aria-label="Directions five to eight">
+
+<article class="dir">
+  <div class="hd"><span class="tag bold">Sunny, one signature colour</span><h2 style="font-family:'Gloock',Georgia,serif;font-weight:400;font-size:34px">Plein Jour</h2><p class="idea">Le Jour means the day, so the shop lives through one. Sun yellow is the colour people remember, every watch sits in a white sun disc, and the homepage walks from 07:00 to 21:00.</p></div>
+  <div class="blk"><p class="lbl">Colour</p><div class="sw">
+    <div><i style="background:#F2BE3A"></i><b>Sun</b><small>#F2BE3A</small></div>
+    <div><i style="background:#14243A"></i><b>Night</b><small>#14243A</small></div>
+    <div><i style="background:#F6E3C8"></i><b>Dawn</b><small>#F6E3C8</small></div>
+    <div><i style="background:#D8E6F0"></i><b>Sky</b><small>#D8E6F0</small></div>
+    <div><i style="background:#FFFDF8"></i><b>Paper</b><small>#FFFDF8</small></div>
+  </div></div>
+  <div class="blk"><p class="lbl">Type</p><div class="spec" style="background:#F2BE3A;color:#14243A">
+    <span class="d" style="font-family:'Gloock',Georgia,serif">07:00 First light</span>
+    <span class="t" style="font-family:'Hanken Grotesk',sans-serif">The road is yours for another hour. Press the pusher at the last house of the village.</span>
+    <span class="n">Gloock · Hanken Grotesk 400 to 600</span></div></div>
+  <div class="blk"><p class="lbl">Image mood</p><div class="mood">
+    <figure class="sun"><span><img src="assets/img/pack-lj-cm-001-02-800.webp" alt="Corsa Master Panda in a white sun disc" loading="lazy"></span></figure>
+    <figure><img src="assets/img/lj-dm-003-03-p-900.webp" alt="Delmare Blue in warm light" loading="lazy"></figure>
+    <figure><img src="assets/img/lj-br-004-05-p-900.webp" alt="Brooklyn Champagne on the wrist" loading="lazy"></figure>
+  </div></div>
+  <div class="blk"><p class="lbl">Homepage</p><a class="shot" href="5-plein-jour/index.html"><img src="assets/board/5-plein-jour-home.webp" alt="Plein Jour homepage, first screen" loading="lazy"><span class="mob"><img src="assets/board/5-plein-jour-mobil.webp" alt="Plein Jour homepage on a phone" loading="lazy"></span></a></div>
+  <div class="blk"><p class="lbl">Product detail</p><a class="shot" href="5-plein-jour/watch.html"><img src="assets/board/5-plein-jour-watch.webp" alt="Plein Jour product page, Corsa Master" loading="lazy"></a></div>
+  <div class="blk"><p class="lbl">From Venezianico</p><ul class="took"><li>One watch opens the page, one line, one button</li><li>Story and shop take turns, chapter by chapter</li><li>A dark band for the evening, like their product bands</li></ul></div>
+  <div class="blk"><p class="lbl">From Christopher Ward</p><ul class="took"><li>Three worlds with a starting price each</li><li>Duties, delivery and service as one clear row</li></ul></div>
+  <div class="blk"><p class="lbl">Feels like</p><p class="idea">A Riviera morning that lasts until dinner.</p></div>
+  <div class="go"><a class="btn p" href="5-plein-jour/index.html">Open homepage</a><a class="btn" href="5-plein-jour/watch.html">Product page</a></div>
+</article>
+
+<article class="dir">
+  <div class="hd"><span class="tag bold">Racing, loud type, calm colour</span><h2 style="font-family:'Big Shoulders Display',Impact,sans-serif;font-weight:800;text-transform:uppercase;font-size:38px;line-height:.9">Paddock</h2><p class="idea">The chronographs lead. Condensed racing type, a real tachymeter scale running across the page, and the 7203 of June 1980 as a number people remember.</p></div>
+  <div class="blk"><p class="lbl">Colour</p><div class="sw">
+    <div><i style="background:#EEE7D7"></i><b>Panda</b><small>#EEE7D7</small></div>
+    <div><i style="background:#141414"></i><b>Tarmac</b><small>#141414</small></div>
+    <div><i style="background:#C8342B"></i><b>Signal</b><small>#C8342B</small></div>
+    <div><i style="background:#FFFFFF"></i><b>White</b><small>#FFFFFF</small></div>
+    <div><i style="background:#6F685C"></i><b>Pit grey</b><small>#6F685C</small></div>
+  </div></div>
+  <div class="blk"><p class="lbl">Type</p><div class="spec" style="background:#141414;color:#F1ECE1">
+    <span class="d" style="font-family:'Big Shoulders Display',Impact,sans-serif;font-weight:800;text-transform:uppercase;font-size:40px;line-height:.9">Start. Stop. Remember.</span>
+    <span class="t" style="font-family:'Barlow',sans-serif">Start the chronograph at a kilometre post. Stop it at the next one. Read your speed on the bezel.</span>
+    <span class="n">Big Shoulders Display 800 · Barlow 400 to 600</span></div></div>
+  <div class="blk"><p class="lbl">Image mood</p><div class="mood">
+    <figure><img src="assets/img/sq-band-rosso-900.webp" alt="RMC Rosso dial close-up" loading="lazy"></figure>
+    <figure><img src="assets/img/lj-rd-001-05-p-900.webp" alt="Roadster with driving gloves and compass" loading="lazy"></figure>
+    <figure><img src="assets/img/lj-cm-001-04-800.webp" alt="Corsa Master dial and tachymeter" loading="lazy"></figure>
+  </div></div>
+  <div class="blk"><p class="lbl">Homepage</p><a class="shot" href="6-paddock/index.html"><img src="assets/board/6-paddock-home.webp" alt="Paddock homepage, first screen" loading="lazy"><span class="mob"><img src="assets/board/6-paddock-mobil.webp" alt="Paddock homepage on a phone" loading="lazy"></span></a></div>
+  <div class="blk"><p class="lbl">Product detail</p><a class="shot" href="6-paddock/watch.html"><img src="assets/board/6-paddock-watch.webp" alt="Paddock product page, Corsa Master" loading="lazy"></a></div>
+  <div class="blk"><p class="lbl">From Venezianico</p><ul class="took"><li>Dark full-bleed product image as the opening</li><li>Specifications set large, like their calibre block</li><li>A heritage chapter in its own colour band</li></ul></div>
+  <div class="blk"><p class="lbl">From Christopher Ward</p><ul class="took"><li>Three chronographs side by side with size, height and water resistance</li><li>Divers and everyday as a second row</li></ul></div>
+  <div class="blk"><p class="lbl">Feels like</p><p class="idea">Pit lane at nine in the morning, engines warm.</p></div>
+  <div class="go"><a class="btn p" href="6-paddock/index.html">Open homepage</a><a class="btn" href="6-paddock/watch.html">Product page</a></div>
+</article>
+
+<article class="dir">
+  <div class="hd"><span class="tag">Elegant, dials as art</span><h2 style="font-family:'Bodoni Moda',Didot,serif;font-weight:500;font-size:36px">Cabinet</h2><p class="idea">Le Jour’s dials hung like paintings. Each room takes the colour of a dial, every watch gets a museum label, and all 53 dials hang together on one wall.</p></div>
+  <div class="blk"><p class="lbl">Colour</p><div class="sw">
+    <div><i style="background:#0F3D2E"></i><b>Malachite</b><small>#0F3D2E</small></div>
+    <div><i style="background:#561816"></i><b>Rosso</b><small>#561816</small></div>
+    <div><i style="background:#B4C8D5"></i><b>Sky</b><small>#B4C8D5</small></div>
+    <div><i style="background:#6E4524"></i><b>Bronze</b><small>#6E4524</small></div>
+    <div><i style="background:#E8E7E3"></i><b>Gallery</b><small>#E8E7E3</small></div>
+  </div></div>
+  <div class="blk"><p class="lbl">Type</p><div class="spec" style="background:#0F3D2E;color:#F4F3EF">
+    <span class="d" style="font-family:'Bodoni Moda',Didot,serif;font-weight:500">Room I, Stone</span>
+    <span class="t" style="font-family:'Work Sans',sans-serif">Malachite grows in bands, and no two slices have the same pattern. The dial you get is yours alone.</span>
+    <span class="n">Bodoni Moda 500 · Work Sans 400 and 500</span></div></div>
+  <div class="blk"><p class="lbl">Image mood</p><div class="mood">
+    <figure class="frm" style="background:#0F3D2E"><span><img src="assets/img/dial-lj-fd-002-600.webp" alt="Fardon Malachite dial, framed" loading="lazy"></span></figure>
+    <figure class="frm" style="background:#561816"><span><img src="assets/img/dial-lj-rmc-006-600.webp" alt="RMC Rosso dial, framed" loading="lazy"></span></figure>
+    <figure class="frm" style="background:#B4C8D5"><span><img src="assets/img/dial-lj-br-005-600.webp" alt="Brooklyn Light Blue dial, framed" loading="lazy"></span></figure>
+  </div></div>
+  <div class="blk"><p class="lbl">Homepage</p><a class="shot" href="7-cabinet/index.html"><img src="assets/board/7-cabinet-home.webp" alt="Cabinet homepage, first screen" loading="lazy"><span class="mob"><img src="assets/board/7-cabinet-mobil.webp" alt="Cabinet homepage on a phone" loading="lazy"></span></a></div>
+  <div class="blk"><p class="lbl">Product detail</p><a class="shot" href="7-cabinet/watch.html"><img src="assets/board/7-cabinet-watch.webp" alt="Cabinet product page, Corsa Master" loading="lazy"></a></div>
+  <div class="blk"><p class="lbl">From Venezianico</p><ul class="took"><li>Craft and art carry the brand, the shop follows</li><li>Statement sections in deep colour</li><li>Product page that tells the object’s story below the price</li></ul></div>
+  <div class="blk"><p class="lbl">From Christopher Ward</p><ul class="took"><li>The whole range visible at once, on the dial wall</li><li>Every watch labelled with size, movement and price</li></ul></div>
+  <div class="blk"><p class="lbl">Feels like</p><p class="idea">A private gallery evening, one wall at a time.</p></div>
+  <div class="go"><a class="btn p" href="7-cabinet/index.html">Open homepage</a><a class="btn" href="7-cabinet/watch.html">Product page</a></div>
+</article>
+
+<article class="dir">
+  <div class="hd"><span class="tag bold">Lively, the most vibrant</span><h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;letter-spacing:-.04em;font-size:36px">Your Day</h2><p class="idea">Four days, four colours: track, sea, city, night. You choose your day and Le Jour hands you the watch. Every dial appears as a round swatch, all 53 to pick from.</p></div>
+  <div class="blk"><p class="lbl">Colour</p><div class="sw">
+    <div><i style="background:#C9412F"></i><b>Track</b><small>#C9412F</small></div>
+    <div><i style="background:#2C66AE"></i><b>Sea</b><small>#2C66AE</small></div>
+    <div><i style="background:#E9DCC4"></i><b>City</b><small>#E9DCC4</small></div>
+    <div><i style="background:#14513E"></i><b>Night</b><small>#14513E</small></div>
+    <div><i style="background:#FFFFFF"></i><b>White</b><small>#FFFFFF</small></div>
+  </div></div>
+  <div class="blk"><p class="lbl">Type</p><div class="spec" style="background:#C9412F;color:#fff">
+    <span class="d" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;letter-spacing:-.04em">What kind of day is it?</span>
+    <span class="t" style="font-family:'Bricolage Grotesque',sans-serif">Le Jour means the day. Pick yours, we have the watch.</span>
+    <span class="n">Bricolage Grotesque 400 to 800</span></div></div>
+  <div class="blk"><p class="lbl">Image mood</p><div class="mood">
+    <figure><img src="assets/img/lj-rmc-006-04-p-900.webp" alt="RMC Rosso in the hand" loading="lazy"></figure>
+    <figure class="dot" style="background:#2C66AE"><span><img src="assets/img/dial-lj-dm-003-600.webp" alt="Delmare Blue dial as a round swatch" loading="lazy"></span></figure>
+    <figure class="dot" style="background:#14513E"><span><img src="assets/img/dial-lj-fd-002-600.webp" alt="Fardon Malachite dial as a round swatch" loading="lazy"></span></figure>
+  </div></div>
+  <div class="blk"><p class="lbl">Homepage</p><a class="shot" href="8-your-day/index.html"><img src="assets/board/8-your-day-home.webp" alt="Your Day homepage, first screen" loading="lazy"><span class="mob"><img src="assets/board/8-your-day-mobil.webp" alt="Your Day homepage on a phone" loading="lazy"></span></a></div>
+  <div class="blk"><p class="lbl">Product detail</p><a class="shot" href="8-your-day/watch.html"><img src="assets/board/8-your-day-watch.webp" alt="Your Day product page, Corsa Master" loading="lazy"></a></div>
+  <div class="blk"><p class="lbl">From Venezianico</p><ul class="took"><li>Collections sold through wrist and lifestyle pictures</li><li>One clear call per section</li></ul></div>
+  <div class="blk"><p class="lbl">From Christopher Ward</p><ul class="took"><li>Families as coloured cards, here sorted by day</li><li>A swipe row with every dial in stock</li></ul></div>
+  <div class="blk"><p class="lbl">Feels like</p><p class="idea">Weekend energy, the Baqless spirit in a watch shop.</p></div>
+  <div class="go"><a class="btn p" href="8-your-day/index.html">Open homepage</a><a class="btn" href="8-your-day/watch.html">Product page</a></div>
+</article>
+
+</section>
+</main>
+
+<section class="learn" aria-labelledby="learn-h">
+  <h2 id="learn-h">What we took from your two references</h2>
+  <ol>
+    <li><b>The watch opens the page.</b><p>Venezianico starts with one watch, full width, one line and one button. Every direction here opens the same way.</p></li>
+    <li><b>Story and shop take turns.</b><p>Brand chapter, collections, statement, journal, then the watches. The rhythm keeps people scrolling.</p></li>
+    <li><b>Collections are shown on the wrist.</b><p>Venezianico sells each line through a lifestyle picture and its name. Le Jour has these photos for every line.</p></li>
+    <li><b>The product page tells a story after the price.</b><p>Thumbnails and accordions above, then dark image bands, the movement and a statement below.</p></li>
+    <li><b>Christopher Ward makes a large range easy.</b><p>Families with their own cards, size, movement and water resistance on every card, filters, and delivery promises next to the price.</p></li>
+  </ol>
+</section>
+
+<footer class="f"><span>All photography and the film from lejourwatches.ch</span><span>Watch data from today’s shop</span><span>Proposal for discussion, not published</span></footer>
+</div>
